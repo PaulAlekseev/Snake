@@ -1,5 +1,6 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
+#include <math.h>
 
 
 using namespace std;
@@ -18,5 +19,30 @@ public:
         this->direction = direction;
         this->posX = posX;
         this->posY = posY;
+    }
+    void changedirection(int required)
+    {
+        if (int (abs(this->direction-required)) != 2)
+        {
+            this->direction = required;
+        }
+    }
+    void moving()
+    {
+        switch (this->direction)
+        {
+            case 1:
+                this -> posY++;
+                break;
+            case 2:
+                this -> posX++;
+                break;
+            case 3:
+                this -> posY--;
+                break;
+            case 4:
+                this -> posX--;
+                break;
+        }
     }
 };
