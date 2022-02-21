@@ -20,6 +20,7 @@ public:
         this->posX = posX;
         this->posY = posY;
     }
+
     void changedirection(int required)
     {
         if (int (abs(this->direction-required)) != 2)
@@ -27,6 +28,7 @@ public:
             this->direction = required;
         }
     }
+    
     void moving()
     {
         switch (this->direction)
