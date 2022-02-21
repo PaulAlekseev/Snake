@@ -3,7 +3,7 @@
 
 int main(){
     
-    sf::RenderWindow window(sf::VideoMode(800, 600), "Snake game");
+    sf::RenderWindow window(sf::VideoMode(1200, 600), "Snake game");
     
     while (window.isOpen())
     {
@@ -24,7 +24,7 @@ int main(){
 
         window.clear();
 
-        sprite.setPosition(1,2);
+        sprite.setPosition(400,300);
 
         window.draw(sprite);
         
