@@ -66,16 +66,6 @@ public:
                 bodyY[0] = this -> headY;
                 break;
         }
-
-        for (int i = 0; i < length;i++)
-        {
-            cout << i+1 << "  ";
-            cout << "Y: " << bodyY[i];
-            cout << "| X: " << bodyX[i];
-            cout << endl;
-        }
-        cout << "------" << endl;
-
     }
 };
 
