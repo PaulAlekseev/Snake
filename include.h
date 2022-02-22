@@ -12,7 +12,6 @@ public:
     int direction;
     int headX;
     int headY;
-
     
     Snake(int length, int direction, int headX, int headY)
     {
@@ -32,8 +31,29 @@ public:
     
     void step()
     {
+
+        switch (this -> direction)
+        {
+            case 1:
+                this -> headY--;
+                break;
+            case 2:
+                this -> headX++;
+                break;
+            case 3:
+                this -> headY++;
+                break;
+            case 4:
+                this -> headX--;
+                break;
+        }
+
         int bodyX[length];
         int bodyY[length];
+
+        bodyX[0] = this -> headX;
+        bodyY[0] = this -> headY;
+
 
         for (int index = length; index > 0; --index)
         {
@@ -41,20 +61,11 @@ public:
             bodyY[index] = bodyY[index - 1];
         }
 
-        switch (this -> direction)
+        for (int i = 0; i < length-1;i++)
         {
-            case 1:
-                this -> headY++;
-                break;
-            case 2:
-                this -> headX++;
-                break;
-            case 3:
-                this -> headY--;
-                break;
-            case 4:
-                this -> headX--;
-                break;
+            cout << bodyY[i];
+            cout << bodyX[i];
+            cout << endl;
         }
     }
 };
