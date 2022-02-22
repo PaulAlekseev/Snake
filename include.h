@@ -7,14 +7,15 @@ using namespace std;
 
 class Snake 
 {
-public:
+    public:
     int length;
     int direction;
     int headX;
     int headY;
     int bodyX[100];
     int bodyY[100];  
-        
+    int rotation;
+
     Snake(int length, int direction, int headX, int headY)
     {
         this -> length = length;
@@ -27,7 +28,7 @@ public:
 
     void changedirection(int required)
     {
-        if (int (abs(this -> direction-required)) != 2)
+        if (int (abs(this -> direction - required)) != 2)
         {
             this -> direction = required;
         }
@@ -49,21 +50,25 @@ public:
                 this -> headY--;
                 bodyY[0] = this -> headY + 1;
                 bodyX[0] = this -> headX;
+                this -> rotation = 0;
                 break;
             case 2:
                 this -> headX++;
                 bodyX[0] = this -> headX - 1;
                 bodyY[0] = this -> headY;
+                this -> rotation = 90;
                 break;
             case 3:
                 this -> headY++;
                 bodyY[0] = this -> headY - 1;
                 bodyX[0] = this -> headX;
+                this -> rotation = 180;
                 break;
             case 4:
                 this -> headX--;
                 bodyX[0] = this -> headX + 1;
                 bodyY[0] = this -> headY;
+                this -> rotation = 270;
                 break;
         }
     }
@@ -72,17 +77,18 @@ public:
 class WindowArea
 {
     public:
-        int resX;
-        int resY;
-        double scaleX;
-        double scaleY;        
+    float resolutionX;
+    float resolutionY;
+    float gridScaleX;
+    float gridScaleY;
 
-        WindowArea(int resX, int resY)
-        {
-            this -> resX = resX;
-            this -> resY = resY;
-            this -> scaleX = resX / 40;
-            this -> scaleY = resY / 23;
-        };
-        
+    WindowArea(float resolutionX,float resolutionY)
+    {
+        this -> resolutionX = resolutionX;
+        this -> resolutionY = resolutionY;
+        // spacing between each element of a grid
+        this -> gridScaleX = resolutionX / 60;
+        this -> gridScaleY = resolutionY / 34;
+    }
+
 };
