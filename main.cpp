@@ -7,6 +7,8 @@ int main(){
 
     WindowArea area(1920, 1080);
 
+    int direction = 3;
+
     sf::RenderWindow window(sf::VideoMode(area.resolutionX, area.resolutionY), "Snake game");
 
     sf::Clock clock;
@@ -31,11 +33,11 @@ int main(){
             window.close();
         };
 
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))snake.changedirection(1);
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))snake.changedirection(2);
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))snake.changedirection(3);
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))snake.changedirection(4);
-            
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) direction = 1; 
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) direction = 2;
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) direction = 3;
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) direction = 4;
+
         }
 
 
@@ -50,6 +52,7 @@ int main(){
         window.display();
         if(elapsed1.asSeconds() > 0.1)
         {
+            snake.changedirection(direction);
             snake.step();
             clock.restart();
         }
