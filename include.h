@@ -10,15 +10,16 @@ class Snake
 public:
     int length;
     int direction;
-    int posX;
-    int posY;
+    int headX;
+    int headY;
+
     
-    Snake(int length, int direction, int posX, int posY)
+    Snake(int length, int direction, int headX, int headY)
     {
         this -> length = length;
         this -> direction = direction;
-        this -> posX = posX;
-        this -> posY = posY;
+        this -> headX = headX;
+        this -> headY = headY;
     }
 
     void changedirection(int required)
@@ -29,21 +30,30 @@ public:
         }
     }
     
-    void moving()
+    void step()
     {
+        int bodyX[length];
+        int bodyY[length];
+
+        for (int index = length; index > 0; --index)
+        {
+            bodyX[index] = bodyX[index - 1];
+            bodyY[index] = bodyY[index - 1];
+        }
+
         switch (this -> direction)
         {
             case 1:
-                this -> posY++;
+                this -> headY++;
                 break;
             case 2:
-                this -> posX++;
+                this -> headX++;
                 break;
             case 3:
-                this -> posY--;
+                this -> headY--;
                 break;
             case 4:
-                this -> posX--;
+                this -> headX--;
                 break;
         }
     }
