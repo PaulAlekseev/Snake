@@ -12,7 +12,9 @@ public:
     int direction;
     int headX;
     int headY;
-    
+    int bodyX[100];
+    int bodyY[100];  
+        
     Snake(int length, int direction, int headX, int headY)
     {
         this -> length = length;
@@ -20,6 +22,8 @@ public:
         this -> headX = headX;
         this -> headY = headY;
     }
+   
+
 
     void changedirection(int required)
     {
@@ -28,45 +32,50 @@ public:
             this -> direction = required;
         }
     }
-    
+
+
     void step()
     {
 
-        switch (this -> direction)
-        {
-            case 1:
-                this -> headY--;
-                break;
-            case 2:
-                this -> headX++;
-                break;
-            case 3:
-                this -> headY++;
-                break;
-            case 4:
-                this -> headX--;
-                break;
-        }
-
-        int bodyX[length];
-        int bodyY[length];
-
-        bodyX[0] = this -> headX;
-        bodyY[0] = this -> headY;
-
-
-        for (int index = length; index > 0; --index)
+        for (int index = length; index > -1; index--)
         {
             bodyX[index] = bodyX[index - 1];
             bodyY[index] = bodyY[index - 1];
         }
-
-        for (int i = 0; i < length-1;i++)
+        
+        switch (this -> direction)
         {
-            cout << bodyY[i];
-            cout << bodyX[i];
+            case 1:
+                this -> headY--;
+                bodyY[0] = this -> headY + 1;
+                bodyX[0] = this -> headX;
+                break;
+            case 2:
+                this -> headX++;
+                bodyX[0] = this -> headX - 1;
+                bodyY[0] = this -> headY;
+                break;
+            case 3:
+                this -> headY++;
+                bodyY[0] = this -> headY - 1;
+                bodyX[0] = this -> headX;
+                break;
+            case 4:
+                this -> headX--;
+                bodyX[0] = this -> headX + 1;
+                bodyY[0] = this -> headY;
+                break;
+        }
+
+        for (int i = 0; i < length;i++)
+        {
+            cout << i+1 << "  ";
+            cout << "Y: " << bodyY[i];
+            cout << "| X: " << bodyX[i];
             cout << endl;
         }
+        cout << "------" << endl;
+
     }
 };
 
