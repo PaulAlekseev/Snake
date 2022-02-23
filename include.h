@@ -74,6 +74,46 @@ class Snake
     }
 };
 
+
+
+class Fruit
+{
+    public:
+    int posX;
+    int posY;
+    int SnakepositionX;
+    int SnakepositionY;
+    int SnakepositionX2;
+    int SnakepositionY2;
+
+    Fruit(int posX, int posY, int SnakepositionX, int SnakepositionY)
+    {
+        this -> posX = posX;
+        this -> posY = posY;
+        this -> SnakepositionX = SnakepositionX;
+        this -> SnakepositionY = SnakepositionY;
+    }
+
+    Fruit(int posX, int posY, int SnakepositionX, int SnakepositionY, int SnakepositionX2, int SnakepositionY2)
+    {
+        this -> posX = posX;
+        this -> posY = posY;
+        this -> SnakepositionX = SnakepositionX;
+        this -> SnakepositionY = SnakepositionY;
+        this -> SnakepositionX2 = SnakepositionX2;
+        this -> SnakepositionY2 = SnakepositionY2;
+    }
+
+    void gotEaten()
+    {
+            if ((this -> SnakepositionX == this -> posX) && (this -> SnakepositionY == this -> posY))
+        {
+            cout << "goteaten";
+        }
+    }
+};
+
+
 class WindowArea
 {
     public:
