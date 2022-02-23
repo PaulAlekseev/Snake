@@ -1,6 +1,7 @@
 #include <iostream>
-#include <SFML/Graphics.hpp>
 #include <math.h>
+#include <cstdlib>
+#include <SFML/Graphics.hpp>
 
 
 using namespace std;
@@ -72,6 +73,11 @@ class Snake
                 break;
         }
     }
+
+    void growth()
+    {
+        this -> length = this -> length + 1;
+    }
 };
 
 
@@ -81,45 +87,29 @@ class Fruit
     public:
     int posX;
     int posY;
-    int SnakepositionX;
-    int SnakepositionY;
-    int SnakepositionX2;
-    int SnakepositionY2;
 
-    Fruit(int posX, int posY, int SnakepositionX, int SnakepositionY)
+    Fruit(int posX, int posY)
     {
-        this -> posX = posX;
+        this -> posX = posY;
         this -> posY = posY;
-        this -> SnakepositionX = SnakepositionX;
-        this -> SnakepositionY = SnakepositionY;
     }
 
-    Fruit(int posX, int posY, int SnakepositionX, int SnakepositionY, int SnakepositionX2, int SnakepositionY2)
+    bool gotEaten(int SnakepositionX , int SnakepositionY)
     {
-        this -> posX = posX;
-        this -> posY = posY;
-        this -> SnakepositionX = SnakepositionX;
-        this -> SnakepositionY = SnakepositionY;
-        this -> SnakepositionX2 = SnakepositionX2;
-        this -> SnakepositionY2 = SnakepositionY2;
-    }
-
-    bool gotEaten()
-    {
-        if ((this -> SnakepositionX == this -> posX) && (this -> SnakepositionY == this -> posY))
+        if ((SnakepositionX == this->posX) && (SnakepositionY == this->posY))
         {
             return true;
         }
         return false;
     }
 
-    int gotEatenMulti()
+    int gotEaten(int SnakepositionX , int SnakepositionY, int SnakepositionX2, int SnakepositionY2)
     {
-        if ((this -> SnakepositionX == this -> posX) && (this -> SnakepositionY == this -> posY))
+        if ((SnakepositionX == this -> posX) && (SnakepositionY == this -> posY))
         {
             return 1;
         }
-        if ((this -> SnakepositionX2 == this -> posX) && (this -> SnakepositionY2 == this -> posY))
+        if ((SnakepositionX2 == this -> posX) && (SnakepositionY2 == this -> posY))
         {
             return 2;
         }
