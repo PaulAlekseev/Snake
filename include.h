@@ -104,12 +104,26 @@ class Fruit
         this -> SnakepositionY2 = SnakepositionY2;
     }
 
-    void gotEaten()
+    bool gotEaten()
     {
-            if ((this -> SnakepositionX == this -> posX) && (this -> SnakepositionY == this -> posY))
+        if ((this -> SnakepositionX == this -> posX) && (this -> SnakepositionY == this -> posY))
         {
-            cout << "goteaten";
+            return true;
         }
+        return false;
+    }
+
+    int gotEatenMulti()
+    {
+        if ((this -> SnakepositionX == this -> posX) && (this -> SnakepositionY == this -> posY))
+        {
+            return 1;
+        }
+        if ((this -> SnakepositionX2 == this -> posX) && (this -> SnakepositionY2 == this -> posY))
+        {
+            return 2;
+        }
+        return 0;
     }
 };
 
