@@ -9,6 +9,8 @@ int main(){
 
     WindowArea area(40, 20);
 
+    TextCounter textC ("Font/Font.ttf", 50);
+
     int direction = 3;
 
     srand(int (time(0)));
@@ -23,6 +25,14 @@ int main(){
 
     sf::Sprite sprite(body);
     sf::Sprite fruitsprite(fruit1);
+
+    sf::Font font;
+    font.loadFromFile(textC.fontPath);
+
+    sf::Text text;
+    text.setFont(font);
+    text.setCharacterSize(textC.size);
+    text.setStyle(sf::Text::Underlined);
 
     
     while (window.isOpen())
@@ -52,6 +62,7 @@ int main(){
 
         sprite.setPosition(snake.headX*area.gridScaleX, snake.headY*area.gridScaleY);
         window.draw(sprite);
+        window.draw(text);
 
         for (int i = 0; i < snake.length; i++)
         {
@@ -60,17 +71,20 @@ int main(){
         }
         
         window.display();
-        if(elapsed1.asSeconds() > 0.2)
+        if(elapsed1.asSeconds() > 0.1)
         {
 
             if (fruit.gotEaten(snake.headX, snake.headY))
             {
                 snake.growth();
                 fruit.changePosition(rand(),area.amountX, area.amountY);
+                text.setString(to_string(snake.length));
             }
             snake.changedirection(direction);
             snake.step();
             clock.restart();
+            textC.appearing(snake.headX, snake.headY, snake.direction);
+            text.setPosition(snake.headX * area.gridScaleX + textC.posX, snake.headY * area.gridScaleY + textC.posY);
         }
     }
 }
