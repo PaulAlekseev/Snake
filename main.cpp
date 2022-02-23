@@ -5,11 +5,13 @@ int main(){
 
     Snake snake(9, 3, 12, 12);
 
-    Fruit fruit(30, 30);
+    Fruit fruit(15, 15);
 
-    WindowArea area(1920, 1080);
+    WindowArea area(40, 20);
 
     int direction = 3;
+
+    srand(int (time(0)));
 
     sf::RenderWindow window(sf::VideoMode(area.resolutionX, area.resolutionY), "Snake game");
 
@@ -58,17 +60,17 @@ int main(){
         }
         
         window.display();
-        if(elapsed1.asSeconds() > 0.1)
+        if(elapsed1.asSeconds() > 0.2)
         {
 
             if (fruit.gotEaten(snake.headX, snake.headY))
             {
                 snake.growth();
+                fruit.changePosition(rand(),area.amountX, area.amountY);
             }
             snake.changedirection(direction);
             snake.step();
             clock.restart();
-            cout << snake.length;
         }
     }
 }

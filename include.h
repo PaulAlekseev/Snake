@@ -1,6 +1,7 @@
 #include <iostream>
 #include <math.h>
 #include <cstdlib>
+#include <ctime>
 #include <SFML/Graphics.hpp>
 
 
@@ -115,24 +116,34 @@ class Fruit
         }
         return 0;
     }
+
+    void changePosition(int randomnumber, int amountX, int amountY)
+    {
+        srand(randomnumber % amountY);
+        this -> posX = randomnumber % amountX;
+        this -> posY = rand() % amountY;
+    }
 };
 
 
 class WindowArea
 {
     public:
-    float resolutionX;
-    float resolutionY;
-    float gridScaleX;
-    float gridScaleY;
+    int resolutionX;
+    int resolutionY;
+    int gridScaleX;
+    int gridScaleY;
+    int amountX;
+    int amountY;
 
-    WindowArea(float resolutionX,float resolutionY)
+    WindowArea(int amountX,int amountY)
     {
-        this -> resolutionX = resolutionX;
-        this -> resolutionY = resolutionY;
-        // spacing between each element of a grid
-        this -> gridScaleX = resolutionX / 60;
-        this -> gridScaleY = resolutionY / 34;
+        this -> resolutionX = amountX * 32;
+        this -> resolutionY = amountY * 32;
+        this -> gridScaleX = 32;
+        this -> gridScaleY = 32;
+        this -> amountX = amountX;
+        this -> amountY = amountY;
     }
 
 };
