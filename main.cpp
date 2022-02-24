@@ -32,7 +32,7 @@ int main(){
     sf::Text text;
     text.setFont(font);
     text.setCharacterSize(textC.size);
-    text.setStyle(sf::Text::Underlined);
+    text.setStyle(sf::Text::Bold);
 
     
     while (window.isOpen())
@@ -74,10 +74,10 @@ int main(){
         if(elapsed1.asSeconds() > 0.1)
         {
 
-            if (fruit.gotEaten(snake.headX, snake.headY))
+            if (fruit.gotEatenBy(snake))
             {
                 snake.growth();
-                fruit.changePosition(rand(),area.amountX, area.amountY);
+                fruit.changePosition(rand(), area);
                 text.setString(to_string(snake.length));
             }
             snake.changedirection(direction);

@@ -83,50 +83,6 @@ class Snake
 };
 
 
-
-class Fruit
-{
-    public:
-    int posX;
-    int posY;
-
-    Fruit(int posX, int posY)
-    {
-        this -> posX = posY;
-        this -> posY = posY;
-    }
-
-    bool gotEaten(int SnakepositionX , int SnakepositionY)
-    {
-        if ((SnakepositionX == this->posX) && (SnakepositionY == this->posY))
-        {
-            return true;
-        }
-        return false;
-    }
-
-    int gotEaten(int SnakepositionX , int SnakepositionY, int SnakepositionX2, int SnakepositionY2)
-    {
-        if ((SnakepositionX == this -> posX) && (SnakepositionY == this -> posY))
-        {
-            return 1;
-        }
-        if ((SnakepositionX2 == this -> posX) && (SnakepositionY2 == this -> posY))
-        {
-            return 2;
-        }
-        return 0;
-    }
-
-    void changePosition(int randomnumber, int amountX, int amountY)
-    {
-        srand(randomnumber % amountY);
-        this -> posX = randomnumber % amountX;
-        this -> posY = rand() % amountY;
-    }
-};
-
-
 class WindowArea
 {
     public:
@@ -149,6 +105,50 @@ class WindowArea
 
 };
 
+
+class Fruit
+{
+    public:
+    int posX;
+    int posY;
+
+    Fruit(int posX, int posY)
+    {
+        this -> posX = posY;
+        this -> posY = posY;
+    }
+
+    bool gotEatenBy(Snake snake)
+    {
+        if ((snake.headX == this->posX) && (snake.headY == this->posY))
+        {
+            return true;
+        }
+        return false;
+    }
+
+    int gotEaten(Snake snake1, Snake snake2)
+    {
+        if ((snake1.headX == this -> posX) && (snake1.headY == this -> posY))
+        {
+            return 1;
+        }
+        if ((snake2.headX == this -> posX) && (snake2.headY == this -> posY))
+        {
+            return 2;
+        }
+        return 0;
+    }
+
+    void changePosition(int randomnumber, WindowArea windowArea)
+    {
+        srand(randomnumber % windowArea.amountY);
+        this -> posX = randomnumber % windowArea.amountX;
+        this -> posY = rand() % windowArea.amountY;
+    }
+};
+
+
 class TextCounter
 {
     public:
@@ -167,7 +167,7 @@ class TextCounter
 
     void appearing(int snakeHeadX, int snakeHeadY, int snakeDirection)
     {
-        int visibility = 5;
+        int visibility = 6;
         switch (snakeDirection)
         {
             case 1:
