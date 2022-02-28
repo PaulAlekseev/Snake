@@ -2,7 +2,6 @@
 #include <string>
 #include <math.h>
 #include <cstdlib>
-#include <ctime>
 #include <SFML/Graphics.hpp>
 
 
@@ -127,7 +126,7 @@ class Fruit
         return false;
     }
 
-    int gotEaten(Snake snake1, Snake snake2)
+    int gotEatenBy(Snake snake1, Snake snake2)
     {
         if ((snake1.headX == this -> posX) && (snake1.headY == this -> posY))
         {

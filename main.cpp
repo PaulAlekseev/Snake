@@ -1,60 +1,45 @@
 #include "include.h"
+#include "Game/Game.h"
 
 
 int main(){
 
-    Snake snake(9, 3, 12, 12);
+    // Snake snake(9, 3, 12, 12);
 
-    Fruit fruit(15, 15);
+    // Fruit fruit(15, 15);
 
-    WindowArea area(40, 20);
+    // WindowArea area(40, 20);
 
-    TextCounter textC ("Font/Font.ttf", 50);
+    // TextCounter textC ("Font/Font.ttf", 50);
 
-    int direction = 3;
+    
+    // int direction = 3;
 
-    srand(int (time(0)));
+    // srand(int (time(0)));
 
-    sf::RenderWindow window(sf::VideoMode(area.resolutionX, area.resolutionY), "Snake game");
+    // sf::Clock clock;
 
-    sf::Clock clock;
+    // sf::Texture body, fruit1;
+    // body.loadFromFile("Textures/body1.png");
+    // fruit1.loadFromFile("Textures/fruit.png");
 
-    sf::Texture body, fruit1;
-    body.loadFromFile("Textures/body1.png");
-    fruit1.loadFromFile("Textures/fruit.png");
+    // sf::Sprite sprite(body);
+    // sf::Sprite fruitsprite(fruit1);
 
-    sf::Sprite sprite(body);
-    sf::Sprite fruitsprite(fruit1);
+    // sf::Font font;
+    // font.loadFromFile(textC.fontPath);
 
-    sf::Font font;
-    font.loadFromFile(textC.fontPath);
-
-    sf::Text text;
     text.setFont(font);
     text.setCharacterSize(textC.size);
     text.setStyle(sf::Text::Bold);
 
+    Game game;
+
     
-    while (window.isOpen())
+    while (game.isRunning())
     {
 
         sf::Time elapsed1 = clock.getElapsedTime();
-
-        sf::Event event;
-        while(window.pollEvent(event))
-        {
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
-        {
-            window.close();
-        };
-
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) direction = 1; 
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) direction = 2;
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) direction = 3;
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) direction = 4;
-
-        }
-
 
         window.clear();
         fruitsprite.setPosition(fruit.posX*area.gridScaleX, fruit.posY*area.gridScaleY);
