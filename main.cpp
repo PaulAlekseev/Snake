@@ -29,9 +29,6 @@ int main(){
     // sf::Font font;
     // font.loadFromFile(textC.fontPath);
 
-    text.setFont(font);
-    text.setCharacterSize(textC.size);
-    text.setStyle(sf::Text::Bold);
 
     Game game;
 
