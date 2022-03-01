@@ -11,12 +11,17 @@ GameState::~GameState()
 
 }
 
+void GameState::endState()
+{
+
+}
+
 void GameState::update()
 {
 
 }
 
-void GameState::render(sf::RenderTarget* target = nullptr)
+void GameState::render(sf::RenderTarget* target)
 {
 
 }

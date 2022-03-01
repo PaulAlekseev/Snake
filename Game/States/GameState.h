@@ -1,7 +1,6 @@
 #ifndef GAMESTATE_H
 #define GAMESTATE_H
 
-#pragma once
 
 #include "State.cpp"
 
@@ -10,11 +9,9 @@ class GameState : public State
 {
 private:
 
-
-
 public:
     GameState(sf::RenderWindow* window);
-    ~GameState();
+    virtual ~GameState();
 
     //Functions
     void endState();
