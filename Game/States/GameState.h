@@ -16,8 +16,9 @@ public:
     //Functions
     void endState();
 
+    void updateKeyBinds();
     void update();
-    void render(sf::RenderTarget* target = nullptr);
+    void render();
 };
 
 #endif

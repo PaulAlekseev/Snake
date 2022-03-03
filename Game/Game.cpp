@@ -51,10 +51,6 @@ void Game::poolEvent()
 {
     while(this->window->pollEvent(this->event))
     {
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
-        {
-            this->window->close();
-        }
         //     if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) direction = 1; 
         //     if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) direction = 2;
         //     if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) direction = 3;
@@ -70,6 +66,13 @@ void Game::update()
     if (!this->states.empty())
     {
         this->states.top()->update();
+
+        if (this->states.top()->getQuit())
+        {
+            this->states.top()->endState();
+            delete this->states.top();
+            this->window->close();
+        }
     }
 }
 
