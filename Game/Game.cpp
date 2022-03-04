@@ -71,8 +71,11 @@ void Game::update()
         {
             this->states.top()->endState();
             delete this->states.top();
-            this->window->close();
         }
+    }
+    else
+    {
+        this->window->close();
     }
 }
 
