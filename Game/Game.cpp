@@ -71,6 +71,7 @@ void Game::update()
         {
             this->states.top()->endState();
             delete this->states.top();
+            this->states.pop();
         }
     }
     else

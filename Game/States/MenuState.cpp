@@ -19,7 +19,7 @@ MenuState::MenuState(sf::RenderWindow* window, std::stack<State*>* states)
 
 MenuState::~MenuState()
 {
-
+    std::cout << "Ending Menustate" << std::endl;
 }
 
 void MenuState::placeText(std::string Text, float posX, float posY)
@@ -31,13 +31,13 @@ void MenuState::placeText(std::string Text, float posX, float posY)
 
 void MenuState::updateKeyBinds()
 {
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
     {
         this->QUIT();
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
     {
-        std::cout << "Hello from GameState" << std::endl;
+        std::cout << "Hello from MenuState" << std::endl;
     }
 }
 

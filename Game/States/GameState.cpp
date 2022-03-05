@@ -22,7 +22,7 @@ void GameState::updateKeyBinds()
     {
         this->QUIT();
     }
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
     {
         std::cout << "Hello from GameState" << std::endl;
     }
