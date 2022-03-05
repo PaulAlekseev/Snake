@@ -2,7 +2,8 @@
 #define GAMESTATE_H
 
 
-#include "State.cpp"
+#include "../Game.h"
+#include "MenuState.cpp"
 
 
 class GameState : public State
@@ -10,7 +11,7 @@ class GameState : public State
 private:
 
 public:
-    GameState(sf::RenderWindow* window);
+    GameState(sf::RenderWindow* window, std::stack<State*>* states);
     virtual ~GameState();
 
     //Functions

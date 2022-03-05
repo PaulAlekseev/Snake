@@ -1,9 +1,9 @@
 #include "GameState.h"
 
-GameState::GameState(sf::RenderWindow* window)
-    : State(window)
+GameState::GameState(sf::RenderWindow* window, std::stack<State*>* states)
+    : State(window, states)
 {
-
+    
 }
 
 GameState::~GameState()
@@ -21,6 +21,14 @@ void GameState::updateKeyBinds()
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
     {
         this->QUIT();
+    }
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+    {
+        std::cout << "Hello from GameState" << std::endl;
+    }
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::E))
+    {
+        this->states->push(new MenuState(this->window, this->states));
     }
 }   
 

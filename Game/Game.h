@@ -5,7 +5,6 @@
 
 #include "States/GameState.cpp"
 
-
 class Game
 {
 

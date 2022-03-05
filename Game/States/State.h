@@ -2,7 +2,6 @@
 #define STATE_H
 
 #include <stack>
-#include <map>
 #include <vector>
 #include <iostream>
 #include <SFML/Graphics.hpp>
@@ -11,12 +10,13 @@
 
 class State
 {
-private:
+protected:
+    std::stack<State*>* states;
     sf::RenderWindow* window;
     bool quit;
 
 public:
-    State(sf::RenderWindow* window);
+    State(sf::RenderWindow* window, std::stack<State*>* states);
     virtual ~State();
 
     const bool& getQuit();
