@@ -5,13 +5,13 @@
 
 #include <SFML/Graphics.hpp>
 #include <iostream>
-#include "State.cpp"
+#include "GameState.cpp"
 
 class MenuState : public State
 {
 private:
-    sf::Text text;
     sf::Font font;
+    sf::Text text;
     
     void initText();
 public:

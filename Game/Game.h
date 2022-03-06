@@ -3,7 +3,7 @@
 
 #pragma once
 
-#include "States/GameState.cpp"
+#include "States/MenuState.cpp"
 
 class Game
 {

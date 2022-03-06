@@ -4,6 +4,7 @@ GameState::GameState(sf::RenderWindow* window, std::stack<State*>* states)
     : State(window, states)
 {
     
+    std::cout << "GameState opened" << std::endl;
 }
 
 GameState::~GameState()
@@ -25,10 +26,6 @@ void GameState::updateKeyBinds()
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
     {
         std::cout << "Hello from GameState" << std::endl;
-    }
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::E))
-    {
-        this->states->push(new MenuState(this->window, this->states));
     }
 }   
 

@@ -3,18 +3,18 @@
 
 void MenuState::initText()
 {
-    this->font.loadFromFile("../../Font/Font.ttf");
-    this->text.setFont(font);
+    this->font.loadFromFile("Font/Font.ttf");
     this->text.setCharacterSize(50);
-    this->text.setStyle(sf::Text::Bold);
+    this->text.setFont(font);
     this->text.setOrigin(text.getGlobalBounds().width/2, text.getGlobalBounds().height/2);
 }
+
 
 MenuState::MenuState(sf::RenderWindow* window, std::stack<State*>* states)
     : State(window, states)
 {
     this->initText();
-    std::cout << "MenuState opened" << std::endl;
+
 }
 
 MenuState::~MenuState()
@@ -24,9 +24,9 @@ MenuState::~MenuState()
 
 void MenuState::placeText(std::string Text, float posX, float posY)
 {
-    this->text.setPosition(posX, posY);
     this->text.setString(Text);
-    this->window->draw(text);
+    this->text.setPosition(posX, posY);
+    this->window->draw(this->text);
 }
 
 void MenuState::updateKeyBinds()
@@ -39,6 +39,10 @@ void MenuState::updateKeyBinds()
     {
         std::cout << "Hello from MenuState" << std::endl;
     }
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::E))
+    {
+        this->states->push(new GameState(this->window, this->states));
+    }
 }
 
 void MenuState::update()
@@ -48,5 +52,6 @@ void MenuState::update()
 
 void MenuState::render()
 {
-
+    this->placeText("hello guys", 100, 100);
+    this->placeText("hello noguys", 500, 500);
 }
