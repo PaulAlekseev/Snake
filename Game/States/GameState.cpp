@@ -2,7 +2,7 @@
 
 void GameState::initSnake()
 {
-    this->snake = new Snake(3, 3, 3, 3, this->window);
+    this->snake = new Snake(30, 3, 3, 3, this->window);
 }
 
 void GameState::initFruit()
@@ -55,12 +55,12 @@ void GameState::update()
 
     if(elapsed.asSeconds() > 0.1)
     {
+        this->snake->bitHimself();
         if (fruit->gotEaten(this->snake->getHeadX(), this->snake->getHeadY()))
         {
             fruit->changePosition();
             this->snake->growth();
         }
-        std::cout << this->snake->getHeadX() << std::endl;
         this->snake->changeDirection(direction);
         this->snake->step();
         this->clock->restart();

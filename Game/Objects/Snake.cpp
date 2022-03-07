@@ -125,7 +125,13 @@ const int Snake::getHeadY()
     return this->headY;
 }
 
-void bitHimself()
-[
-    
-]
+void Snake::bitHimself()
+{
+    for (int i = 1; i < this->length; i++)
+    {
+        if (this->headX == this->bodyX[i] && this->headY == this->bodyY[i])
+        {
+            this->length = i+1;
+        }
+    }
+}
