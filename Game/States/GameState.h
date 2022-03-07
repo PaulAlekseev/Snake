@@ -11,8 +11,16 @@ class GameState : public State
 {
 private:
     
+    Snake* snake;
+    Fruit* fruit;
+    sf::Clock* clock;
+
+
     void initSnake();
     void initFruit();
+    void initClock();
+
+    int direction;
 
 public:
     GameState(sf::RenderWindow* window, std::stack<State*>* states);
@@ -20,6 +28,8 @@ public:
 
     //Functions
     void endState();
+
+    const sf::Time& getElapsed();
 
     void updateKeyBinds();
     void update();

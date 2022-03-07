@@ -3,18 +3,22 @@
 
 Snake::Snake(int length, int direction, int headX, int headY, sf::RenderWindow* window)
 {
-    {
-        this -> length = length;
-        this -> direction = direction;
-        this -> headX = headX;
-        this -> headY = headY;
-        this -> window = window;
-    }
+    this -> length = length;
+    this -> direction = direction;
+    this -> headX = headX;
+    this -> headY = headY;
+    this -> window = window;
+    this -> scale = new Scaling(this->window);
 }
 
 Snake::~Snake()
 {
+    
+}
 
+const int& Snake::getDirection()
+{
+    return this->direction;
 }
 
 void Snake::changeDirection(int required)
@@ -27,7 +31,7 @@ void Snake::changeDirection(int required)
 
 void Snake::step()
 {
-    for (int index = length; index > -1; index--)
+    for (int index = this->length; index > -1; index--)
     {
         bodyX[index] = bodyX[index - 1];
         bodyY[index] = bodyY[index - 1];
@@ -62,18 +66,20 @@ void Snake::step()
     }
 }
 
-void Snake::draw(std::string path)
+
+
+void Snake::drawSnake(std::string path)
 {
     snakeTexture.loadFromFile(path);
     sf::Sprite snakeSprite(snakeTexture);
-    snakeSprite.setScale()
-    snakeSprite.setPosition(this->headX*area.gridScaleX, this->headY*area.gridScaleY);
-    window.draw(snakeSprite);
+    snakeSprite.setScale(this->scale->getScaleVector());
+    snakeSprite.setPosition(this->headX * this->scale->getGridSizeX(), this->headY * this->scale->getGridSizeY());
+    this->window->draw(snakeSprite);
 
     for (int i = 0; i < this->length; i++)
     {
-        snakeSprite.setPosition(this->bodyX[i]*area.gridScaleX, this->bodyY[i]*area.gridScaleY);
-        window.draw(snakeSprite);
+        snakeSprite.setPosition(this->bodyX[i]*this->scale->getGridSizeX(), this->bodyY[i]*this->scale->getGridSizeY());
+        this->window->draw(snakeSprite);
     }
 }
 

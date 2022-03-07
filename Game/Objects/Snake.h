@@ -6,7 +6,8 @@
 #include <math.h>
 #include <cstdlib>
 #include <SFML/Graphics.hpp>
-#include "WindowSettings.cpp"
+#include "Scaling.cpp"
+
 
 class Snake
 {
@@ -21,15 +22,17 @@ private:
 
     sf::RenderWindow* window;
     sf::Texture snakeTexture;
-    WindowSettings sets(this->window);
+    Scaling* scale;
+    
 
 public:
     Snake(int length, int direction, int headX, int headY, sf::RenderWindow* window);
     ~Snake();
 
+    const int& getDirection();
     void changeDirection(int required);
     void step();
-    void draw(std::string pathToTextures);
+    void drawSnake(std::string path);
     void growth();
     const int getHeadX();
     const int getHeadY();
