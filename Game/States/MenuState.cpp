@@ -37,7 +37,7 @@ void MenuState::updateKeyBinds()
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
     {
-        std::cout << "Hello from MenuState" << std::endl;
+        std::cout << this->window->getSize().x << "   " << this->window->getSize().y << std::endl;
     }
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::E))
     {

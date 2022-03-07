@@ -8,8 +8,8 @@ void Game::initVariables()
 
 void Game::initWindow()
 {
-    this->videoMode.width = 800;
-    this->videoMode.height = 600;
+    this->videoMode.width = 1920;
+    this->videoMode.height = 1080;
     this->window = new sf::RenderWindow (this->videoMode, "Snake game", sf::Style::Fullscreen);
         
 }

@@ -1,15 +1,24 @@
 #include "GameState.h"
 
+void GameState::initSnake()
+{
+    Snake snake(3, 3, 12, 12);
+}
+
+void GameState::initFruit()
+{
+    Fruit fruit(300, 300);
+}
+
 GameState::GameState(sf::RenderWindow* window, std::stack<State*>* states)
     : State(window, states)
 {
-    
-    std::cout << "GameState opened" << std::endl;
+
 }
 
 GameState::~GameState()
 {
-    std::cout << "Ending Gamestate!";
+    
 }
 
 void GameState::endState()
@@ -23,10 +32,7 @@ void GameState::updateKeyBinds()
     {
         this->QUIT();
     }
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-    {
-        std::cout << "Hello from GameState" << std::endl;
-    }
+    
 }   
 
 void GameState::update()

@@ -4,11 +4,15 @@
 
 #include "../Game.h"
 #include "State.cpp"
+#include "../Objects/Fruit.cpp"
 
 
 class GameState : public State
 {
 private:
+    
+    void initSnake();
+    void initFruit();
 
 public:
     GameState(sf::RenderWindow* window, std::stack<State*>* states);

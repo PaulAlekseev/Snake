@@ -1,12 +1,14 @@
 #include "Snake.h"
 
-Snake::Snake(int length, int direction, int headX, int headY)
+
+Snake::Snake(int length, int direction, int headX, int headY, sf::RenderWindow* window)
 {
     {
         this -> length = length;
         this -> direction = direction;
         this -> headX = headX;
         this -> headY = headY;
+        this -> window = window;
     }
 }
 
@@ -57,6 +59,21 @@ void Snake::step()
             bodyY[0] = this -> headY;
             this -> rotation = 270;
             break;
+    }
+}
+
+void Snake::draw(std::string path)
+{
+    snakeTexture.loadFromFile(path);
+    sf::Sprite snakeSprite(snakeTexture);
+    snakeSprite.setScale()
+    snakeSprite.setPosition(this->headX*area.gridScaleX, this->headY*area.gridScaleY);
+    window.draw(snakeSprite);
+
+    for (int i = 0; i < this->length; i++)
+    {
+        snakeSprite.setPosition(this->bodyX[i]*area.gridScaleX, this->bodyY[i]*area.gridScaleY);
+        window.draw(snakeSprite);
     }
 }
 

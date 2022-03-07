@@ -6,7 +6,7 @@ Fruit::Fruit(int posX, int posY)
 {
     this -> posX = posY;
     this -> posY = posY;
-    srand(time(NULL))
+    srand(time(NULL));
 }
 
 Fruit::~Fruit()
@@ -29,7 +29,7 @@ const int Fruit::gotEatenBy(Snake snake, Snake snake2)
         {
             return 1;
         }
-        if ((snake2.getHeadX() == this -> posX) && (snake2.getHeady() == this -> posY))
+        if ((snake2.getHeadX() == this -> posX) && (snake2.getHeadY() == this -> posY))
         {
             return 2;
         }
