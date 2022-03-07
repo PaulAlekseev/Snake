@@ -1,6 +1,11 @@
 #include "Snake.h"
 
 
+void Snake::initScale()
+{
+    this->scale = new Scaling(this->window);
+}
+
 Snake::Snake(int length, int direction, int headX, int headY, sf::RenderWindow* window)
 {
     this -> length = length;
@@ -8,7 +13,8 @@ Snake::Snake(int length, int direction, int headX, int headY, sf::RenderWindow* 
     this -> headX = headX;
     this -> headY = headY;
     this -> window = window;
-    this -> scale = new Scaling(this->window);
+    
+    this -> initScale();
 }
 
 Snake::~Snake()
@@ -26,6 +32,26 @@ void Snake::changeDirection(int required)
     if (int (abs(this -> direction - required)) != 2)
     {
         this -> direction = required;
+    }
+}
+
+void Snake::outOfView()
+{
+    if (this->headX > 60)
+    {
+        this->headX = 0;
+    }
+    else if (this->headX < 0)
+    {
+        this->headX = 60;
+    }
+    else if (this->headY > 34)
+    {
+        this->headY = 0;
+    }
+    else if (this->headY < 0)
+    {
+        this->headY = 34;
     }
 }
 
@@ -64,13 +90,14 @@ void Snake::step()
             this -> rotation = 270;
             break;
     }
+    this->outOfView();
 }
 
 
 
-void Snake::drawSnake(std::string path)
+void Snake::drawSnake(std::string pathToTextures)
 {
-    snakeTexture.loadFromFile(path);
+    snakeTexture.loadFromFile(pathToTextures);
     sf::Sprite snakeSprite(snakeTexture);
     snakeSprite.setScale(this->scale->getScaleVector());
     snakeSprite.setPosition(this->headX * this->scale->getGridSizeX(), this->headY * this->scale->getGridSizeY());
@@ -95,5 +122,10 @@ const int Snake::getHeadX()
 
 const int Snake::getHeadY()
 {
-    return this->headX;
+    return this->headY;
 }
+
+void bitHimself()
+[
+    
+]

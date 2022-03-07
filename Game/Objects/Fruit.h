@@ -8,16 +8,23 @@
 class Fruit
 {
 private:
-    int posX;
-    int posY;
+
+    sf::RenderWindow* window;
+    Scaling* scale;
+    sf::Texture fruitTexture;
+
+    void initScale();
 
 public:
-    Fruit(int posX, int posY);
+    int posX;
+    int posY;
+    Fruit(int posX, int posY, sf::RenderWindow* window);
     ~Fruit();
 
-    const bool gotEatenBy(Snake snake);
-    const int gotEatenBy (Snake snake, Snake snake2);
+    const bool gotEaten(int snakePosX, int snakePosY);
     void changePosition();
+
+    void drawFruit(std::string pathToTextures);
 };
 
 #endif

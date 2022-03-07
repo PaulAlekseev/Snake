@@ -24,6 +24,7 @@ private:
     sf::Texture snakeTexture;
     Scaling* scale;
     
+    void initScale();
 
 public:
     Snake(int length, int direction, int headX, int headY, sf::RenderWindow* window);
@@ -31,13 +32,13 @@ public:
 
     const int& getDirection();
     void changeDirection(int required);
+    void outOfView();
     void step();
     void drawSnake(std::string path);
     void growth();
     const int getHeadX();
     const int getHeadY();
-    
-
+    void bitHimself();
 };
 
 #endif

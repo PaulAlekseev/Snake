@@ -2,11 +2,22 @@
 #include <stdlib.h>
 #include <time.h>
 
-Fruit::Fruit(int posX, int posY)
+
+void Fruit::initScale()
 {
-    this -> posX = posY;
-    this -> posY = posY;
+    this->scale = new Scaling(this->window);
+}
+
+Fruit::Fruit(int posX, int posY, sf::RenderWindow* window)
+{
+    this -> window = window;
+
     srand(time(NULL));
+
+    this -> posX = rand() % 60;
+    this -> posY = rand() % 34;
+    
+    this->initScale();
 }
 
 Fruit::~Fruit()
@@ -14,33 +25,26 @@ Fruit::~Fruit()
 
 }
 
-const bool Fruit::gotEatenBy(Snake snake)
+const bool Fruit::gotEaten(int snakePosX, int snakePosY)
     {
-        if ((snake.getHeadX() == this->posX) && (snake.getHeadY() == this->posY))
+        if ((snakePosX == this->posX) && (snakePosY == this->posY))
         {
             return true;
         }
         return false;
     }
 
-const int Fruit::gotEatenBy(Snake snake, Snake snake2)
-{
-        if ((snake.getHeadX() == this -> posX) && (snake.getHeadY() == this -> posY))
-        {
-            return 1;
-        }
-        if ((snake2.getHeadX() == this -> posX) && (snake2.getHeadY() == this -> posY))
-        {
-            return 2;
-        }
-        return 0;
-
-}
-
 void Fruit::changePosition()
 {
-    // srand(randomnumber % windowArea.amountY);
-    // this -> posX = randomnumber % windowArea.amountX;
-    // this -> posY = rand() % windowArea.amountY;
+    this -> posX = rand() % 60;
+    this -> posY = rand() % 34;
+}
+
+void Fruit::drawFruit(std::string pathToTextures)
+{
+    fruitTexture.loadFromFile(pathToTextures);
+    sf::Sprite fruitSprite(fruitTexture);
+    fruitSprite.setPosition(this->posX * this->scale->getGridSizeX(), this->posY * this->scale->getGridSizeY());
+    this->window->draw(fruitSprite);
 }
 

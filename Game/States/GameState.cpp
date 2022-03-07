@@ -2,25 +2,27 @@
 
 void GameState::initSnake()
 {
-    snake = new Snake(3, 3, 3, 3, this->window);
+    this->snake = new Snake(3, 3, 3, 3, this->window);
 }
 
 void GameState::initFruit()
 {
-    fruit = new Fruit(3, 3);
+    this->fruit = new Fruit(3, 3, this->window);
 }
 
 void GameState::initClock()
 {
-    clock = new sf::Clock();
+    this->clock = new sf::Clock();
 }
 
 GameState::GameState(sf::RenderWindow* window, std::stack<State*>* states)
     : State(window, states)
 {
     this->initSnake();
+    this->initFruit();
     this->initClock();
     this->direction = this->snake->getDirection();
+    this->window->setFramerateLimit(60);
 }
 
 GameState::~GameState()
@@ -49,8 +51,16 @@ void GameState::update()
 {
     sf::Time elapsed = this->clock->getElapsedTime();
     this->updateKeyBinds();
+
+
     if(elapsed.asSeconds() > 0.1)
     {
+        if (fruit->gotEaten(this->snake->getHeadX(), this->snake->getHeadY()))
+        {
+            fruit->changePosition();
+            this->snake->growth();
+        }
+        std::cout << this->snake->getHeadX() << std::endl;
         this->snake->changeDirection(direction);
         this->snake->step();
         this->clock->restart();
@@ -59,6 +69,7 @@ void GameState::update()
 
 void GameState::render()
 {
+    this->fruit->drawFruit("Textures/fruit.png");
     this->snake->drawSnake("Textures/body1.png");
 }
 
