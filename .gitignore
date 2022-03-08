@@ -1,6 +1,5 @@
 *.out
 *.sh
-Tests.cpp
 main.cpp
 Tests
 sfml-app
