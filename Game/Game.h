@@ -16,9 +16,12 @@ private:
     
     std::stack<State*> states;
 
+    std::map<std::string, int> supportedKeys;
+
     //Private functions
     void initVariables();
     void initWindow();
+    void initKeys();
     void initStates();    
 
 public:

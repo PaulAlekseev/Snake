@@ -5,18 +5,21 @@
 #include <vector>
 #include <iostream>
 #include <SFML/Graphics.hpp>
+#include <map>
 
 #pragma once
 
 class State
 {
 protected:
-    std::stack<State*>* states;
     sf::RenderWindow* window;
+    std::map<std::string, int>* supportedKeys;
+    std::map<std::string, int> keyBinds;
+    std::stack<State*>* states;
     bool quit;
 
 public:
-    State(sf::RenderWindow* window, std::stack<State*>* states);
+    State(sf::RenderWindow* window, std::map<std::string, int>* supportedKeys, std::stack<State*>* states);
     virtual ~State();
 
     const bool& getQuit();
