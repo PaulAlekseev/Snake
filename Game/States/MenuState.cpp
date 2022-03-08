@@ -38,13 +38,13 @@ MenuState::MenuState(sf::RenderWindow* window, std::map<std::string, int>* suppo
 
 int MenuState::getChoice()
 {
-    if (this->choice > 2)
+    if (this->choice > 1)
     {
         this->choice = 0;
     }
     if (this->choice < 0)
     {
-        this->choice = 2;
+        this->choice = 1;
     }
     return this->choice;
 }
@@ -66,27 +66,19 @@ void MenuState::drawText()
 {
     if (this->getChoice() == 0) 
     {
-        this->placeText("SinglePlayer", sf::Color::Red, this->scale->getCenterX(), this->window->getSize().y / 4);
+        this->placeText("SinglePlayer", sf::Color::Red, this->scale->getCenterX(), this->window->getSize().y / 3);
     }
     else
     {
-        this->placeText("SinglePlayer", sf::Color::White, this->scale->getCenterX(), this->window->getSize().y / 4);
+        this->placeText("SinglePlayer", sf::Color::White, this->scale->getCenterX(), this->window->getSize().y / 3);
     }
     if (this->getChoice() == 1) 
     {
-        this->placeText("Hello1", sf::Color::Red, this->scale->getCenterX(), this->window->getSize().y / 4 * 2);
+        this->placeText("Quit", sf::Color::Red, this->scale->getCenterX(), this->window->getSize().y / 3 * 2);
     }
     else
     {
-        this->placeText("Hello1", sf::Color::White, this->scale->getCenterX(), this->window->getSize().y / 4 * 2);
-    }
-    if (this->getChoice() == 2) 
-    {
-        this->placeText("Quit", sf::Color::Red, this->scale->getCenterX(), this->window->getSize().y / 4 * 3);
-    }
-    else
-    {
-        this->placeText("Quit", sf::Color::White, this->scale->getCenterX(), this->window->getSize().y / 4 * 3);
+        this->placeText("Quit", sf::Color::White, this->scale->getCenterX(), this->window->getSize().y / 3 * 2);
     }
 }
 
@@ -124,8 +116,6 @@ void MenuState::checkChoice()
             this->states->push(new GameState(this->window, this->supportedKeys, this->states));
             break;
         case 1:
-            //Settings
-        case 2:
             this->QUIT();
     }
 }
