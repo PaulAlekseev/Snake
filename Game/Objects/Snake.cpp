@@ -131,7 +131,7 @@ void Snake::bitHimself()
     {
         if (this->headX == this->bodyX[i] && this->headY == this->bodyY[i])
         {
-            this->length = i+1;
+            this->length = i;
         }
     }
 }

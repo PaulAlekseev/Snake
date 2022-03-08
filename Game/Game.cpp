@@ -46,22 +46,8 @@ const bool Game::isRunning()
     return this->window->isOpen();
 }
 
-//Functions
-void Game::poolEvent()
-{
-    while(this->window->pollEvent(this->event))
-    {
-        //     if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) direction = 1; 
-        //     if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) direction = 2;
-        //     if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) direction = 3;
-        //     if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) direction = 4
-        // }
-    }
-}
-
 void Game::update()
 {
-    this->poolEvent();
 
     if (!this->states.empty())
     {

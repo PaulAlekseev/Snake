@@ -38,13 +38,13 @@ MenuState::MenuState(sf::RenderWindow* window, std::stack<State*>* states)
 
 int MenuState::getChoice()
 {
-    if (this->choice > 3)
+    if (this->choice > 2)
     {
         this->choice = 0;
     }
     if (this->choice < 0)
     {
-        this->choice = 3;
+        this->choice = 2;
     }
     return this->choice;
 }
@@ -66,35 +66,27 @@ void MenuState::drawText()
 {
     if (this->getChoice() == 0) 
     {
-        this->placeText("SinglePlayer", sf::Color::Red, this->scale->getCenterX(), this->window->getSize().y / 5);
+        this->placeText("SinglePlayer", sf::Color::Red, this->scale->getCenterX(), this->window->getSize().y / 4);
     }
     else
     {
-        this->placeText("SinglePlayer", sf::Color::White, this->scale->getCenterX(), this->window->getSize().y / 5);
+        this->placeText("SinglePlayer", sf::Color::White, this->scale->getCenterX(), this->window->getSize().y / 4);
     }
     if (this->getChoice() == 1) 
     {
-        this->placeText("Hello1", sf::Color::Red, this->scale->getCenterX(), this->window->getSize().y / 5 * 2);
+        this->placeText("Hello1", sf::Color::Red, this->scale->getCenterX(), this->window->getSize().y / 4 * 2);
     }
     else
     {
-        this->placeText("Hello1", sf::Color::White, this->scale->getCenterX(), this->window->getSize().y / 5 * 2);
+        this->placeText("Hello1", sf::Color::White, this->scale->getCenterX(), this->window->getSize().y / 4 * 2);
     }
     if (this->getChoice() == 2) 
     {
-        this->placeText("Hello2", sf::Color::Red, this->scale->getCenterX(), this->window->getSize().y / 5 * 3);
+        this->placeText("Quit", sf::Color::Red, this->scale->getCenterX(), this->window->getSize().y / 4 * 3);
     }
     else
     {
-        this->placeText("Hello2", sf::Color::White, this->scale->getCenterX(), this->window->getSize().y / 5 * 3);
-    }
-    if (this->getChoice() == 3) 
-    {
-        this->placeText("Quit", sf::Color::Red, this->scale->getCenterX(), this->window->getSize().y / 5 * 4);
-    }
-    else
-    {
-        this->placeText("Quit", sf::Color::White, this->scale->getCenterX(), this->window->getSize().y / 5 * 4);
+        this->placeText("Quit", sf::Color::White, this->scale->getCenterX(), this->window->getSize().y / 4 * 3);
     }
 }
 
@@ -132,10 +124,8 @@ void MenuState::checkChoice()
             this->states->push(new GameState(this->window, this->states));
             break;
         case 1:
-            // multi
+            //Settings
         case 2:
-            // settings
-        case 3:
             this->QUIT();
     }
 }
@@ -161,7 +151,7 @@ void MenuState::update()
     sf::Time elapsed = this->clock->getElapsedTime();
 
     this->updateKeyBinds();
-    if(elapsed.asSeconds() > 0.35)
+    if(elapsed.asSeconds() > 0.4)
     {
         this->movingChoice();
         this->clock->restart();
