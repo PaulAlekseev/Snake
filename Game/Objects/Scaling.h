@@ -10,23 +10,23 @@ class Scaling
 private:
 
     sf::RenderWindow* window;
-    float gridSizeX;
-    float gridSizeY;
-    float gridScaleX;
-    float gridScaleY;
+    double gridSizeX;
+    double gridSizeY;
+    double gridScaleX;
+    double gridScaleY;
     sf::Vector2f scaleVector;
-    float centerX;
-    float centerY;
+    double centerX;
+    double centerY;
 
 public:
     Scaling(sf::RenderWindow* window);
     ~Scaling();
 
     const sf::Vector2f& getScaleVector();
-    const float& getGridSizeX();
-    const float& getGridSizeY();
-    const float& getCenterX();
-    const float& getCenterY();
+    const double& getGridSizeX();
+    const double& getGridSizeY();
+    const double& getCenterX();
+    const double& getCenterY();
 };
 
 #endif

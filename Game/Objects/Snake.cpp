@@ -5,6 +5,14 @@ void Snake::initScale()
 {
     this->scale = new Scaling(this->window);
 }
+void Snake::initBody()
+{
+    for (int index = this->length; index > -1; index--)
+    {
+        this->bodyX[index] = -1;
+        this->bodyY[index] = -1;
+    }
+}
 
 Snake::Snake(int length, int direction, int headX, int headY, sf::RenderWindow* window)
 {
@@ -15,6 +23,8 @@ Snake::Snake(int length, int direction, int headX, int headY, sf::RenderWindow* 
     this -> window = window;
     
     this -> initScale();
+    this->initBody();
+
 }
 
 Snake::~Snake()
@@ -37,21 +47,21 @@ void Snake::changeDirection(int required)
 
 void Snake::outOfView()
 {
-    if (this->headX > 60)
+    if (this->headX > 59)
     {
         this->headX = 0;
     }
     else if (this->headX < 0)
     {
-        this->headX = 60;
+        this->headX = 59;
     }
-    else if (this->headY > 34)
+    else if (this->headY > 33)
     {
         this->headY = 0;
     }
     else if (this->headY < 0)
     {
-        this->headY = 34;
+        this->headY = 33;
     }
 }
 
@@ -59,34 +69,34 @@ void Snake::step()
 {
     for (int index = this->length; index > -1; index--)
     {
-        bodyX[index] = bodyX[index - 1];
-        bodyY[index] = bodyY[index - 1];
+        this->bodyX[index] = this->bodyX[index - 1];
+        this->bodyY[index] = this->bodyY[index - 1];
     }
     
     switch (this -> direction)
     {
         case 1:
             this -> headY--;
-            bodyY[0] = this -> headY + 1;
-            bodyX[0] = this -> headX;
+            this->bodyY[0] = this -> headY + 1;
+            this->bodyX[0] = this -> headX;
             this -> rotation = 0;
             break;
         case 2:
             this -> headX++;
-            bodyX[0] = this -> headX - 1;
-            bodyY[0] = this -> headY;
+            this->bodyX[0] = this -> headX - 1;
+            this->bodyY[0] = this -> headY;
             this -> rotation = 90;
             break;
         case 3:
             this -> headY++;
-            bodyY[0] = this -> headY - 1;
-            bodyX[0] = this -> headX;
+            this->bodyY[0] = this -> headY - 1;
+            this->bodyX[0] = this -> headX;
             this -> rotation = 180;
             break;
         case 4:
             this -> headX--;
-            bodyX[0] = this -> headX + 1;
-            bodyY[0] = this -> headY;
+            this->bodyX[0] = this -> headX + 1;
+            this->bodyY[0] = this -> headY;
             this -> rotation = 270;
             break;
     }

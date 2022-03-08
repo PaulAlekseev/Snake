@@ -64,6 +64,7 @@ void GameState::update()
         this->snake->changeDirection(direction);
         this->snake->step();
         this->clock->restart();
+        std::cout << this->snake->getHeadX() << "  " << this->snake->getHeadY() << std::endl;
     }
 }
 

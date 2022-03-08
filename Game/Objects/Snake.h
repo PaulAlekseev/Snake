@@ -25,6 +25,7 @@ private:
     Scaling* scale;
     
     void initScale();
+    void initBody();
 
 public:
     Snake(int length, int direction, int headX, int headY, sf::RenderWindow* window);
