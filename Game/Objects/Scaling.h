@@ -15,6 +15,8 @@ private:
     float gridScaleX;
     float gridScaleY;
     sf::Vector2f scaleVector;
+    float centerX;
+    float centerY;
 
 public:
     Scaling(sf::RenderWindow* window);
@@ -23,6 +25,8 @@ public:
     const sf::Vector2f& getScaleVector();
     const float& getGridSizeX();
     const float& getGridSizeY();
+    const float& getCenterX();
+    const float& getCenterY();
 };
 
 #endif

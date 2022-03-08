@@ -8,6 +8,8 @@ Scaling::Scaling(sf::RenderWindow* window)
     this->gridScaleX = this->gridSizeX / 32;
     this->gridScaleY = this->gridSizeY / 32;
     this->scaleVector = sf::Vector2f(this->gridScaleX, this->gridScaleY);
+    this->centerX = this->window->getSize().x / 2;
+    this->centerY = this->window->getSize().y / 2;
 }
 
 Scaling::~Scaling()
@@ -28,4 +30,14 @@ const float& Scaling::getGridSizeX()
 const float& Scaling::getGridSizeY()
 {
     return this->gridSizeY;
+}
+
+const float& Scaling::getCenterX()
+{
+    return centerX;
+}
+
+const float& Scaling::getCenterY()
+{
+    return centerY;
 }

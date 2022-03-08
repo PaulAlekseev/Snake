@@ -11,13 +11,32 @@ class MenuState : public State
 private:
     sf::Font font;
     sf::Text text;
+    sf::Clock* clock;
+    Scaling* scale;
+
+    bool up;
+    bool down;
     
+    void initVariables();
     void initText();
+    void initClock();
+    void initScale();
+
+    int choice;
+    
 public:
     MenuState(sf::RenderWindow* window, std::stack<State*>* states);
     ~MenuState();
 
-    void placeText(std::string Text, float posX, float posY);
+    int getChoice();
+
+    void placeText(std::string Text, sf::Color color, float posX, float posY);
+    void drawText();
+
+    void goUp();
+    void goDown();
+    void movingChoice();
+    void checkChoice();
 
     void updateKeyBinds();
     void update();
