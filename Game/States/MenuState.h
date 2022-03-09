@@ -4,7 +4,7 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
-#include "GameState.cpp"
+#include "VersusState.cpp"
 
 class MenuState : public State
 {

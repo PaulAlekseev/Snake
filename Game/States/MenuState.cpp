@@ -38,13 +38,13 @@ MenuState::MenuState(sf::RenderWindow* window, std::stack<State*>* states)
 
 int MenuState::getChoice()
 {
-    if (this->choice > 1)
+    if (this->choice > 2)
     {
         this->choice = 0;
     }
     if (this->choice < 0)
     {
-        this->choice = 1;
+        this->choice = 2;
     }
     return this->choice;
 }
@@ -66,19 +66,27 @@ void MenuState::drawText()
 {
     if (this->getChoice() == 0) 
     {
-        this->placeText("SinglePlayer", sf::Color::Red, this->scale->getCenterX(), this->window->getSize().y / 3);
+        this->placeText("SinglePlayer", sf::Color::Red, this->scale->getCenterX(), this->window->getSize().y / 4);
     }
     else
     {
-        this->placeText("SinglePlayer", sf::Color::White, this->scale->getCenterX(), this->window->getSize().y / 3);
+        this->placeText("SinglePlayer", sf::Color::White, this->scale->getCenterX(), this->window->getSize().y / 4);
     }
     if (this->getChoice() == 1) 
     {
-        this->placeText("Quit", sf::Color::Red, this->scale->getCenterX(), this->window->getSize().y / 3 * 2);
+        this->placeText("Versus", sf::Color::Red, this->scale->getCenterX(), this->window->getSize().y / 4 * 2);
     }
     else
     {
-        this->placeText("Quit", sf::Color::White, this->scale->getCenterX(), this->window->getSize().y / 3 * 2);
+        this->placeText("Versus", sf::Color::White, this->scale->getCenterX(), this->window->getSize().y / 4 * 2);
+    }
+    if (this->getChoice() == 2) 
+    {
+        this->placeText("Quit", sf::Color::Red, this->scale->getCenterX(), this->window->getSize().y / 4 * 3);
+    }
+    else
+    {
+        this->placeText("Quit", sf::Color::White, this->scale->getCenterX(), this->window->getSize().y / 4 * 3);
     }
 }
 
@@ -116,7 +124,11 @@ void MenuState::checkChoice()
             this->states->push(new GameState(this->window, this->states));
             break;
         case 1:
+            this->states->push(new VersusState(this->window, this->states));
+            break;
+        case 2:
             this->QUIT();
+            break;
     }
 }
 
