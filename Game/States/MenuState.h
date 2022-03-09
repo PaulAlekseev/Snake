@@ -25,7 +25,7 @@ private:
     int choice;
     
 public:
-    MenuState(sf::RenderWindow* window, std::map<std::string, int>* supportedKeys, std::stack<State*>* states);
+    MenuState(sf::RenderWindow* window, std::stack<State*>* states);
     ~MenuState();
 
     int getChoice();

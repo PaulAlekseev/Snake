@@ -14,19 +14,10 @@ void Game::initWindow()
         
 }
 
-void Game::initKeys()
-{
-    this->supportedKeys.emplace("A", sf::Keyboard::Key::A);
-    this->supportedKeys.emplace("D", sf::Keyboard::Key::D);
-    this->supportedKeys.emplace("W", sf::Keyboard::Key::W);
-    this->supportedKeys.emplace("S", sf::Keyboard::Key::S);
-
-    
-}
 
 void Game::initStates()
 {
-    this->states.push(new MenuState(this->window, &this->supportedKeys, &this->states));
+    this->states.push(new MenuState(this->window, &this->states));
 
 }
 
@@ -34,7 +25,6 @@ void Game::initStates()
 Game::Game()
 {
     this->initVariables();
-    this->initKeys();
     this->initWindow();
     this->initStates();
 }

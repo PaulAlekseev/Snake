@@ -27,8 +27,8 @@ void MenuState::initScale()
     this->scale = new Scaling(this->window);
 }
 
-MenuState::MenuState(sf::RenderWindow* window, std::map<std::string, int>* supportedKeys, std::stack<State*>* states)
-    : State(window, supportedKeys, states)
+MenuState::MenuState(sf::RenderWindow* window, std::stack<State*>* states)
+    : State(window, states)
 {
     this->initText();
     this->initClock();
@@ -51,7 +51,7 @@ int MenuState::getChoice()
 
 MenuState::~MenuState()
 {
-    std::cout << "Ending Menustate" << std::endl;
+    
 }
 
 void MenuState::placeText(std::string Text, sf::Color color, float posX, float posY)
@@ -113,7 +113,7 @@ void MenuState::checkChoice()
     switch (this->getChoice())
     {
         case 0:
-            this->states->push(new GameState(this->window, this->supportedKeys, this->states));
+            this->states->push(new GameState(this->window, this->states));
             break;
         case 1:
             this->QUIT();

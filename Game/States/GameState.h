@@ -19,12 +19,11 @@ private:
     void initSnake();
     void initFruit();
     void initClock();
-    void initKeyBinds();
 
     int direction;
 
 public:
-    GameState(sf::RenderWindow* window, std::map<std::string, int>* supportedKeys, std::stack<State*>* states);
+    GameState(sf::RenderWindow* window, std::stack<State*>* states);
     virtual ~GameState();
 
     //Functions

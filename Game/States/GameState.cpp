@@ -15,18 +15,10 @@ void GameState::initClock()
     this->clock = new sf::Clock();
 }
 
-void GameState::initKeyBinds()
-{
-    this->keyBinds["MOVE_UP"] = this->supportedKeys->at("W");
-    this->keyBinds["MOVE_RIGHT"] = this->supportedKeys->at("D");
-    this->keyBinds["MOVE_DOWN"] = this->supportedKeys->at("S");
-    this->keyBinds["MOVE_LEFT"] = this->supportedKeys->at("A");
-}
 
-GameState::GameState(sf::RenderWindow* window, std::map<std::string, int>* supportedKeys, std::stack<State*>* states)
-    : State(window, supportedKeys, states)
+GameState::GameState(sf::RenderWindow* window, std::stack<State*>* states)
+    : State(window, states)
 {
-    this->initKeyBinds();
     this->initSnake();
     this->initFruit();
     this->initClock();
@@ -50,10 +42,10 @@ void GameState::updateKeyBinds()
     {
         this->QUIT();
     }
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key(this->keyBinds.at("MOVE_UP")))) direction = 1;
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key(this->keyBinds.at("MOVE_RIGHT")))) direction = 2;
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key(this->keyBinds.at("MOVE_DOWN")))) direction = 3;
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key(this->keyBinds.at("MOVE_LEFT")))) direction = 4;
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) direction = 1;
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) direction = 2;
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) direction = 3;
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) direction = 4;
 }   
 
 void GameState::update()
