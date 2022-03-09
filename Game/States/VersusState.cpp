@@ -92,5 +92,5 @@ void VersusState::render()
 {
     this->fruit->drawFruit("Textures/fruit.png");
     this->snake1->drawSnake("Textures/body1.png");
-    this->snake2->drawSnake("Textures/body1.png");
+    this->snake2->drawSnake("Textures/body2.png");
 }
