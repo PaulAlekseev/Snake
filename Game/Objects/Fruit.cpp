@@ -44,6 +44,7 @@ void Fruit::drawFruit(std::string pathToTextures)
 {
     fruitTexture.loadFromFile(pathToTextures);
     sf::Sprite fruitSprite(fruitTexture);
+    fruitSprite.setScale(this->scale->getScaleVector());
     fruitSprite.setPosition(this->posX * this->scale->getGridSizeX(), this->posY * this->scale->getGridSizeY());
     this->window->draw(fruitSprite);
 }
