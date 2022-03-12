@@ -22,7 +22,7 @@ Fruit::Fruit(int posX, int posY, sf::RenderWindow* window)
 
 Fruit::~Fruit()
 {
-
+    delete this->scale;
 }
 
 const bool Fruit::gotEaten(int snakePosX, int snakePosY)

@@ -51,7 +51,8 @@ int MenuState::getChoice()
 
 MenuState::~MenuState()
 {
-    
+    delete this->clock;
+    delete this->scale;
 }
 
 void MenuState::placeText(std::string Text, sf::Color color, float posX, float posY)

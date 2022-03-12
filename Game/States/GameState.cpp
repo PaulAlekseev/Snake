@@ -28,7 +28,9 @@ GameState::GameState(sf::RenderWindow* window, std::stack<State*>* states)
 
 GameState::~GameState()
 {
-    
+    delete this->snake;
+    delete this->fruit;
+    delete this->clock;
 }
 
 void GameState::endState()

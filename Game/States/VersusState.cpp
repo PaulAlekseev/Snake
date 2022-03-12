@@ -38,7 +38,10 @@ VersusState::VersusState(sf::RenderWindow* window, std::stack<State*>* states)
 
 VersusState::~VersusState()
 {
-
+    delete this->snake1;
+    delete this->snake2;
+    delete this->fruit;
+    delete this->clock;
 }
 
 void VersusState::updateKeyBinds()
