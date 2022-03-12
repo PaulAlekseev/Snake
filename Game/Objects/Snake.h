@@ -35,11 +35,13 @@ public:
     void changeDirection(int required);
     void outOfView();
     void step();
-    void drawSnake(std::string path);
+    void drawSnake(std::string pathToTextures);
     void growth();
     const int getHeadX();
     const int getHeadY();
     void bitHimself();
+    bool wasBittenBy(Snake* snake);
+    bool collision(Snake* othersnake);
 };
 
 #endif

@@ -68,8 +68,18 @@ void VersusState::update()
     if(elapsed.asSeconds() > 0.1)
     {
         this->collision();
+        if (this->snake1->wasBittenBy(this->snake2))
+        {
+            this->QUIT();
+        }
+        if(this->snake2->wasBittenBy(this->snake1))
+        {
+            this->QUIT();
+        }
         this->snake1->bitHimself();
         this->snake2->bitHimself();
+
+
         if (fruit->gotEaten(this->snake1->getHeadX(), this->snake1->getHeadY()))
         {
             fruit->changePosition();
@@ -80,10 +90,14 @@ void VersusState::update()
             fruit->changePosition();
             this->snake2->growth();
         }
+
+
         this->snake1->changeDirection(direction1);
         this->snake2->changeDirection(direction2);
         this->snake1->step();
         this->snake2->step();
+
+
         this->clock->restart();
     }
 }

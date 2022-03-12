@@ -29,7 +29,7 @@ Snake::Snake(int length, int direction, int headX, int headY, sf::RenderWindow* 
 
 Snake::~Snake()
 {
-    
+    delete this->scale;
 }
 
 const int& Snake::getDirection()
@@ -107,8 +107,8 @@ void Snake::step()
 
 void Snake::drawSnake(std::string pathToTextures)
 {
-    snakeTexture.loadFromFile(pathToTextures);
-    sf::Sprite snakeSprite(snakeTexture);
+    this->snakeTexture.loadFromFile(pathToTextures);
+    sf::Sprite snakeSprite(this->snakeTexture);
     snakeSprite.setScale(this->scale->getScaleVector());
     snakeSprite.setPosition(this->headX * this->scale->getGridSizeX(), this->headY * this->scale->getGridSizeY());
     this->window->draw(snakeSprite);
@@ -144,4 +144,17 @@ void Snake::bitHimself()
             this->length = i;
         }
     }
+}
+
+bool Snake::wasBittenBy(Snake* otherSnake)
+{
+    for (int i = 1; i < this->length; i++)
+    {
+        if (otherSnake->getHeadX() == this->bodyX[i] && otherSnake->getHeadY() == this->bodyY[i])
+        {
+            return true;
+            break;
+        }
+    }
+    return false;
 }
