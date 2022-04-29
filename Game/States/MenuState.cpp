@@ -154,7 +154,7 @@ void MenuState::update()
     sf::Time elapsed = this->clock->getElapsedTime();
 
     this->updateKeyBinds();
-    if(elapsed.asSeconds() > 0.4)
+    if(elapsed.asSeconds() > 0.7)
     {
         this->movingChoice();
         this->clock->restart();
